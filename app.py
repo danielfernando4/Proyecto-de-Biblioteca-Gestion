@@ -45,9 +45,20 @@ def registrar():
     return render_template("registrar.html")
 
 
-@app.route("/actualizar")
+
+
+@app.route("/actualizar", methods=["GET", "POST"])
 def actualizar():
-    return render_template("actualizar.html")
+    rows = ["", "", "", ""]
+    if request.method == "POST":
+        data = request.get_json()  
+        query = data.get('query') 
+        rows = [query, query, query, query]
+        print(query)
+        return jsonify({'rows': rows})  # Devuelve un JSON con la lista 'rows'
+    
+    # Si es un GET, simplemente renderizas el template
+    return render_template("actualizar.html", row=rows)
 
 
 @app.route("/eliminar")
