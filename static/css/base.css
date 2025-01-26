@@ -1,0 +1,112 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.encabezado {
+    flex: 0 1 13%;
+    flex-shrink: 1;
+    background-color: #a6271a;
+    display: flex; /* Activar el modelo Flexbox */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centrar verticalmente si hay contenido */
+    width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho */
+    padding: 0 20px; /* Espaciado interno opcional */
+    box-sizing: border-box; /* Incluir padding en el tamaño total */
+}
+
+.logo-nombreEMC {
+    display: flex;
+    align-items: center; /* Centrar verticalmente la imagen */
+}
+
+.encabezado .logo img {
+    width: 120px; /* Tamaño fijo de la imagen */
+    height: auto; /* Mantener la proporción */
+}
+
+.encabezado p {
+    flex-grow: 1; /* Permitir que el texto ocupe espacio restante */
+    text-align: center; /* Centrar el texto horizontalmente */
+    font-size: 25px; /* Tamaño de la fuente */
+    color: #FFFFFF; /* Color del texto */
+    margin: 0; /* Quitar margen para alineación perfecta */
+    font-family: 'Arial', sans-serif; /* Tipo de letra */
+}
+
+/* Diseño responsivo adicional */
+@media (max-width: 768px) {
+    .encabezado {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        justify-content: center; /* Centrar contenido verticalmente */
+        height: auto; /* Ajustar altura automáticamente */
+        padding: 10px; /* Reducir espaciado interno */
+    }
+
+    .encabezado .logo img {
+        width: 100px; /* Reducir tamaño de la imagen */
+    }
+
+    .encabezado p {
+        font-size: 20px; /* Reducir tamaño del texto */
+        text-align: center; /* Seguir centrado */
+    }
+}
+
+.side-main {
+    flex: 0 1 87%;
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    flex: 0 0 18%;
+    background-color: #001E41;
+}
+
+.mainContent {
+    flex: 0 0 82%;
+    width: 100%;
+    background-color: #f3fcfb;
+    justify-content: center;
+}
+
+/* Para configurar el diseño del menú de la barra lateral y los íconos del sidebar */
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li a img {
+    width: 25px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    filter: invert(1);
+}
+
+.menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    text-decoration: none;
+    color: #FFFFFF;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    font-weight: 400;
+    transition: color 0.3s, box-shadow 0.1s;
+}
+
+.menu ul li:hover {
+    background-color: #fa4f4f;
+    border-radius: 16px;
+    color: white;
+}

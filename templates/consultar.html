@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="static/css/disponibilidad.css">
+{% endblock %}
+
+{% block title%} Consultar {% endblock %}
+
+
+{% block content%} 
+
+
+<div class="table-container">
+    <h1> Consultar disponibilidad de libro </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Código del Libro</th>
+                <th>Título</th>
+                <th>Facultad</th>
+                <th>Cantidad</th>
+                <th>Existencias actuales</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                {% if loop.index % 2 == 0 %}
+            <tr class="even-row">
+                <td>{{ row[0]}}</td>
+                <td>{{ row[1]}}</td>
+                <td>{{ row[2]}}</td>
+                <td>{{ row[3]}}</td> <!-- Valor de cantidad -->
+                <td>{{ row[4]}}</td> <!-- Botón eliminar -->
+            </tr>
+                {% else %}
+            <tr class="odd-row">
+                <td>{{ row[0]}}</td>
+                <td>{{ row[0]}}</td>
+                <td>{{ row[0]}}</td>
+                <td>{{ row[0]}}</td> <!-- Valor de cantidad -->
+                <td>{{ row[0]}}</td> <!-- Botón eliminar -->
+            </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

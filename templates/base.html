@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> {% block title%} BASE PROYECTO GESTION {% endblock%}</title>
+
+    <link rel="stylesheet" href="static/css/base.css">
+
+    {% block extra_css %} {% endblock %}
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <div class="container">
+        <header class = "encabezado">
+            <div class = "logo-nombreEMC">
+                <div class="logo">
+                    <img src="static/icons/epn_logo.png" alt="EMC logo">
+                </div>
+            </div>
+
+            <p>GESTIÓN LIBROS EPN</p>
+        </header>
+
+        <div class="side-main">
+            <aside class = "sidebar">
+                <nav class="menu">
+                    <ul>
+                        <li><a href="{{ url_for('registrar') }}"><img src="static/icons/book.png" alt="ícono catálogo de eventos"> Registrar libro</a></li>
+                        <li><a href="{{ url_for('actualizar') }}"><img src="static/icons/pencil.png" alt="ícono contratos de eventos">  Actualizar datos de libro</a></li>
+                        <li><a href="{{ url_for('eliminar') }}"><img src="static/icons/delete.png" alt="ícono clientes"> Eliminar libro</a></li>
+                        <li><a href="{{ url_for('consultar') }}"><img src="static/icons/interview.png" alt="ícono proveedores">Consultar disponibilidad del libro</a></li>
+                        
+                    </ul>
+                </nav>
+    
+            </aside>
+    
+            <main class="mainContent">
+                {% block content%}  {% endblock %}
+            </main>
+        </div>
+    </div>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

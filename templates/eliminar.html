@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="static/css/eliminar.css">
+{% endblock %}
+
+{% block title %} Eliminar{% endblock %}
+
+{% block content %}
+
+
+<div class="table-container">
+    <h2> Eliminar libro</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Código del Libro</th>
+                <th>Título</th>
+                <th>Categoría</th>
+                <th>Facultad</th>
+                <th>Cantidad</th> <!-- Nueva columna para cantidad -->
+                <th>Acciones</th> <!-- Nueva columna para acciones -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                {% if loop.index % 2 == 0 %}
+            <tr class="even-row">
+                <td>{{ row[0]}}</td>
+                <td>{{ row[1]}}</td>
+                <td>{{ row[2]}}</td>
+                <td>{{ row[3]}}</td>
+                <td>{{ row[4]}}</td> <!-- Valor de cantidad -->
+                <td><button class="btn-delete" type="submit">Eliminar</button></td> <!-- Botón eliminar -->
+            </tr>
+                {% else %}
+            <tr class="odd-row">
+                <td>{{ row[0]}}</td>
+                <td>{{ row[1]}}</td>
+                <td>{{ row[2]}}</td>
+                <td>{{ row[3]}}</td>
+                <td>{{ row[4]}}</td> <!-- Valor de cantidad -->
+                <td><button class="btn-delete" type="submit">Eliminar</button></td> <!-- Botón eliminar -->
+            </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
