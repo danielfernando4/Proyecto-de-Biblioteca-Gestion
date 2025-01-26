@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from conectorPostgres import DatabaseConnector
 
 app = Flask(__name__, template_folder="templates")
@@ -61,6 +61,26 @@ def eliminar():
     conn.close()
     print(rows)
     return render_template("eliminar.html", rows=rows)
+
+
+
+@app.route('/eliminar_libro/<string:id>', methods=['DELETE'])
+def eliminar_libro(id):
+    conn = db_conn.get_connection()
+    cursor = conn.cursor()
+    
+    try:
+        # Eliminar el libro de la base de datos usando el id (ahora como cadena)
+        cursor.execute('DELETE FROM inventario WHERE codigo_libro = %s', (id,))
+        cursor.execute('DELETE FROM libro WHERE codigo_libro = %s', (id,))
+        conn.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'success': False, 'error': str(e)})
+    finally:
+        cursor.close()
+        conn.close()
 
 
 @app.route("/consultar")

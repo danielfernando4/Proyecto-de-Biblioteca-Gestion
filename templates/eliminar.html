@@ -8,7 +8,6 @@
 
 {% block content %}
 
-
 <div class="table-container">
     <h2> Eliminar libro</h2>
     <table>
@@ -31,7 +30,7 @@
                 <td>{{ row[2]}}</td>
                 <td>{{ row[3]}}</td>
                 <td>{{ row[4]}}</td> <!-- Valor de cantidad -->
-                <td><button class="btn-delete" type="submit">Eliminar</button></td> <!-- Botón eliminar -->
+                <td><button class="btn-delete" type="button" onclick="eliminarLibro('{{ row[0] }}')">Eliminar</button></td> <!-- Botón eliminar -->
             </tr>
                 {% else %}
             <tr class="odd-row">
@@ -40,7 +39,7 @@
                 <td>{{ row[2]}}</td>
                 <td>{{ row[3]}}</td>
                 <td>{{ row[4]}}</td> <!-- Valor de cantidad -->
-                <td><button class="btn-delete" type="submit">Eliminar</button></td> <!-- Botón eliminar -->
+                <td><button class="btn-delete" type="button" onclick="eliminarLibro('{{ row[0] }}')">Eliminar</button></td> <!-- Botón eliminar -->
             </tr>
                 {% endif %}
             {% endfor %}
@@ -51,4 +50,6 @@
 {% endblock %}
 
 {% block extra_js %}
+<!-- Enlace al archivo JS externo -->
+<script src="{{ url_for('static', filename='js/eliminar.js') }}"></script>
 {% endblock %}
