@@ -47,19 +47,50 @@ def registrar():
 
 
 
-@app.route("/actualizar", methods=["GET", "POST"])
+@app.route("/actualizar", methods=["GET", "POST", "PUT"])
 def actualizar():
-    rows = ["", "", "", ""]
+    rows = ["", "", "", "", "", "", "", ""]
     if request.method == "POST":
         data = request.get_json()  
-        query = data.get('query') 
-        rows = [query, query, query, query]
-        print(query)
-        return jsonify({'rows': rows})  # Devuelve un JSON con la lista 'rows'
-    
-    # Si es un GET, simplemente renderizas el template
+        query = data.get('query')  # Este debe ser el nombre del autor, por ejemplo: "Jose Fernandez"
+        
+        conn = db_conn.get_connection()
+        cursor = conn.cursor()
+
+        try:
+            sql_query = """
+            SELECT libro.codigo_libro, libro.titulo_libro, libro.categoria, libro.numero_pag, 
+                   publicacion.fecha_pub, inventario.cantidad, inventario.disponibles, autor.nombre_autor
+            FROM autor
+            INNER JOIN publicacion ON autor.codigo_autor = publicacion.codigo_autor
+            INNER JOIN libro ON libro.codigo_libro = publicacion.codigo_libro
+            INNER JOIN inventario ON inventario.codigo_libro = libro.codigo_libro
+            INNER JOIN facultad ON facultad.codigo_facultad = inventario.codigo_facultad
+            WHERE libro.codigo_libro = %s
+            """
+
+            params = (query,)
+            cursor.execute(sql_query, params)
+            rows = list(cursor.fetchall())
+            rows_conversion = [elemento for tupla in rows for elemento in tupla]
+            return jsonify({'rows': rows_conversion})
+
+        except Exception as e:
+            print(f"Error ejecutando la consulta: {e}")
+        finally:
+            cursor.close()
+            conn.close()
+
+    elif request.method == "PUT":
+        data = request.get_json()
+        updated_data = data.get('updatedData', [])
+        print("Datos actualizados recibidos:", updated_data)
+
+        return jsonify({"message": "Datos actualizados correctamente."})
+
     return render_template("actualizar.html", row=rows)
 
+        
 
 @app.route("/eliminar")
 def eliminar():

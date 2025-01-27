@@ -6,62 +6,55 @@
 
 {% block title%} Actualizar {% endblock %}
 
-
 {% block content%} 
-
-<h1> Editar libro </h1>
-
-
-
 <div class="search-container">
     <input type="text" id="search-input" class="search-input" placeholder="Buscar...">
     <button id="search-button" class="search-icon" onclick="sendSearchQuery()">&#x1F50D;</button>
 </div>
 
-
 <div class="table-container">
     <h2>Datos actuales del libro</h2>
-    <table>
+    <table id="data-table">
         <tbody>
             <tr>
                 <td><strong>Código del Libro</strong></td>
-                <td>{{ row[0] }}</td>
+                <td contenteditable="false">{{ row[0] }}</td>
             </tr>
             <tr>
                 <td><strong>Título del libro</strong></td>
-                <td>{{ row[1] }}</td>
+                <td contenteditable="true">{{ row[1] }}</td>
             </tr>
             <tr>
                 <td><strong>Categoría del libro</strong></td>
-                <td>{{ row[2] }}</td>
+                <td contenteditable="true">{{ row[2] }}</td>
             </tr>
             <tr>
-                <td><strong>número de páginas</strong></td>
-                <td>{{ row[3] }}</td>
+                <td><strong>Número de páginas</strong></td>
+                <td contenteditable="true">{{ row[3] }}</td>
             </tr>
             <tr>
                 <td><strong>Fecha de publicación</strong></td>
-                <td>{{ row[3] }}</td>
+                <td contenteditable="true">{{ row[4] }}</td>
             </tr>
             <tr>
                 <td><strong>Cantidad de libros</strong></td>
-                <td>{{ row[3] }}</td>
+                <td contenteditable="true">{{ row[5] }}</td>
             </tr>
             <tr>
                 <td><strong>Cantidad de libros disponibles</strong></td>
-                <td>{{ row[3] }}</td>
+                <td contenteditable="true">{{ row[6] }}</td>
             </tr>
             <tr>
                 <td><strong>Autor</strong></td>
-                <td>{{ row[3] }}</td>
+                <td contenteditable="true">{{ row[7] }}</td>
             </tr>
         </tbody>
     </table>
-    <button class="btn-actualizar" type="button" onclick="">Actualizar</button>
+    <button class="btn-actualizar" type="button" onclick="sendUpdatedData()">Actualizar</button>
 </div>
-
 {% endblock %}
 
 {% block extra_js %}
+<script src="{{ url_for('static', filename='js/actualizar.js') }}"></script>
 <script src="{{ url_for('static', filename='js/buscar.js') }}"></script>
 {% endblock %}
