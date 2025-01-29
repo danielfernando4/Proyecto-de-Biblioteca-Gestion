@@ -14,49 +14,49 @@ html, body {
     flex: 0 1 13%;
     flex-shrink: 1;
     background-color: #a6271a;
-    display: flex; /* Activar el modelo Flexbox */
-    justify-content: space-between; /* Espacio entre los elementos */
-    align-items: center; /* Centrar verticalmente si hay contenido */
-    width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho */
-    padding: 0 20px; /* Espaciado interno opcional */
-    box-sizing: border-box; /* Incluir padding en el tamaño total */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    padding: 0 20px; 
+    box-sizing: border-box; 
 }
 
 .logo-nombreEMC {
     display: flex;
-    align-items: center; /* Centrar verticalmente la imagen */
+    align-items: center;
 }
 
 .encabezado .logo img {
-    width: 120px; /* Tamaño fijo de la imagen */
-    height: auto; /* Mantener la proporción */
+    width: 120px;
+    height: auto; 
 }
 
 .encabezado p {
-    flex-grow: 1; /* Permitir que el texto ocupe espacio restante */
-    text-align: center; /* Centrar el texto horizontalmente */
-    font-size: 25px; /* Tamaño de la fuente */
-    color: #FFFFFF; /* Color del texto */
-    margin: 0; /* Quitar margen para alineación perfecta */
-    font-family: 'Arial', sans-serif; /* Tipo de letra */
+    flex-grow: 1; 
+    text-align: center; 
+    font-size: 25px; 
+    color: #FFFFFF; 
+    margin: 0; 
+    font-family: 'Arial', sans-serif; 
 }
 
-/* Diseño responsivo adicional */
+
 @media (max-width: 768px) {
     .encabezado {
-        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-        justify-content: center; /* Centrar contenido verticalmente */
-        height: auto; /* Ajustar altura automáticamente */
-        padding: 10px; /* Reducir espaciado interno */
+        flex-direction: column; 
+        justify-content: center; 
+        height: auto; 
+        padding: 10px; 
     }
 
     .encabezado .logo img {
-        width: 100px; /* Reducir tamaño de la imagen */
+        width: 100px; 
     }
 
     .encabezado p {
-        font-size: 20px; /* Reducir tamaño del texto */
-        text-align: center; /* Seguir centrado */
+        font-size: 20px; 
+        text-align: center; 
     }
 }
 
